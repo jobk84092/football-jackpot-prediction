@@ -1,0 +1,46 @@
+library(httr)
+library(jsonlite)
+
+# API endpoint URL
+api_url <- "http://api.clubelo.com/Fixtures"
+
+# Make the GET request
+response <- GET(api_url)
+
+response
+
+parsed_data <- fromJSON(response)
+
+api_url
+fixtures_data <- fromJSON(content(response, "text"))
+
+# Assuming 'response' contains the API response
+raw_data <- content(response, "text")
+
+# Read the data line by line
+lines <- readLines(textConnection(raw_data))
+
+
+# Now parse the combined data as CSV
+fixtures_data <- read.table(text = combined_data, sep = ";", header = TRUE, 
+                            row.names = TRUE)
+
+# Now you have the fixtures data in the 'fixtures_data' data frame
+# You can process it further as needed
+
+
+fixtures_data <- write.csv(fixtures_data, file = "fixtures_data.csv")
+
+response_content <- content(response, "text")
+cat(response_content)
+
+tryCatch({
+  response <- GET(API_URL)
+  data_df <- fromJSON(content(response, "text"))
+  write.csv(data_df, file = "covid_data.csv", row.names = FALSE)
+}, error = function(e) {
+  cat("Error:", conditionMessage(e), "\n")
+})
+
+write.csv(response_content, file = "15.03.2025.csv")
+
