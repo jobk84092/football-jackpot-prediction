@@ -1,7 +1,0 @@
-library(httr)
-library(jsonlite)
-
-api_url <- paste0("api.clubelo.com/Fixtures")
-
-response <- GET(api_url)
-
