@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  nitter:
+    image: zedeus/nitter:latest
+    platform: linux/amd64
+    container_name: nitter
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - /Users/jobkimani/Library/CloudStorage/OneDrive-Personal/JOB/personal stuff/learning centre/STATISTTICS/betting/nitter/data/sessions.jsonl:/nitter/sessions.jsonl
+      - ./data:/nitter/data
+    environment:
+      - NITTER_DOMAIN=localhost:8080
+      - NITTER_NAME=nitter
+      - NITTER_THEME=Twitter
+      - NITTER_REPLACE_TWITTER=nitter.net
+      - NITTER_REPLACE_YOUTUBE=invidious.snopyta.org
+      - NITTER_REPLACE_REDDIT=teddit.net
+      - NITTER_TOKEN_COUNT=10
+      - NITTER_HMAC_KEY=changeme
+      - NITTER_BASE_URL=http://localhost:8080
+      - NITTER_FILES_PATH=/nitter/data
+      - NITTER_ENABLE_RSS=true
+      - NITTER_ENABLE_DEBUG=false
+      - NITTER_PROXY=
+      - NITTER_USER_AGENT=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 

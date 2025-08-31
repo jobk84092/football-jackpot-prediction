@@ -1,0 +1,8 @@
+library(httr)
+library(jsonlite)
+
+# Make the API request
+api_url <- "http://api.clubelo.com/Fixtures"
+response <- GET(api_url)
+
+write.csv(upcoming_games, file = "path/to/your/upcoming_games.csv", row.names = FALSE)
