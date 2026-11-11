@@ -13,7 +13,7 @@ def get_vegas_odds(api_key):
         'oddsFormat': 'decimal'
     }
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=30)
         if response.status_code == 200:
             return response.json()
         else:

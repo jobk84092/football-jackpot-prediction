@@ -19,7 +19,7 @@ def fetch_fixtures(api_key, league_id, season, date):
     headers = {"X-RapidAPI-Key": api_key, "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"}
     url = "https://api-football-v1.p.rapidapi.com/v3/fixtures"
     params = {"league": league_id, "season": season, "date": date}
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers, params=params, timeout=30)
     df = pd.json_normalize(response.json()['response'])
     return df
 

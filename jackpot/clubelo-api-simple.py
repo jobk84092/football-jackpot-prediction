@@ -28,7 +28,7 @@ def get_clubelo_fixtures(date=None):
     
     # Make the API request
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=60)
         response.raise_for_status()  # Raise an exception for HTTP errors
         
         # Parse the CSV data from the response
